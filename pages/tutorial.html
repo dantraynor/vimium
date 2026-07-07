@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vimium Tutorial</title>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" type="text/css" href="../content_scripts/vimium.css" />
+    <link rel="stylesheet" type="text/css" href="key_mappings.css" />
+    <link rel="stylesheet" type="text/css" href="tutorial.css" />
+    <script src="tutorial.js" type="module"></script>
+  </head>
+
+  <body class="vimium-body">
+    <div id="tutorial-app">
+      <header id="tutorial-header">
+        <div>
+          <h1><span class="vim">Vim</span>ium Tutorial</h1>
+          <div id="tutorial-progress-summary"></div>
+        </div>
+        <button id="tutorial-reset" type="button">Reset progress</button>
+      </header>
+
+      <div id="tutorial-layout">
+        <nav id="tutorial-modules" aria-label="Tutorial modules"></nav>
+        <aside id="tutorial-lessons" aria-label="Tutorial lessons"></aside>
+
+        <main id="tutorial-main">
+          <div id="tutorial-command-meta">
+            <div>
+              <div id="tutorial-group-label"></div>
+              <h2 id="tutorial-title"></h2>
+            </div>
+            <div id="tutorial-risk-label"></div>
+          </div>
+
+          <div id="tutorial-command-row">
+            <code id="tutorial-command-name"></code>
+            <div id="tutorial-key-bindings" class="key-bindings"></div>
+          </div>
+
+          <p id="tutorial-description"></p>
+          <div id="tutorial-step"></div>
+          <div id="tutorial-typed"></div>
+          <div id="tutorial-feedback"></div>
+
+          <section id="tutorial-sandbox" aria-label="Tutorial sandbox"></section>
+
+          <footer id="tutorial-controls">
+            <button id="tutorial-prev" type="button">Previous</button>
+            <button id="tutorial-mark-read" type="button">Mark read</button>
+            <button id="tutorial-next" type="button">Next</button>
+          </footer>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

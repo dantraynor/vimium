@@ -1,0 +1,516 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  background: #f6f7f9;
+  color: #202124;
+}
+
+button {
+  cursor: pointer;
+}
+
+#tutorial-app {
+  min-height: 100vh;
+}
+
+#tutorial-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid #d7dbe2;
+  background: white;
+}
+
+#tutorial-header h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: normal;
+}
+
+#tutorial-header .vim {
+  color: #2f508e;
+}
+
+#tutorial-progress-summary {
+  margin-top: 5px;
+  color: #5f6368;
+  font-size: 13px;
+}
+
+#tutorial-reset,
+#tutorial-controls button {
+  border: 1px solid #b9c0ca;
+  background: #fff;
+  border-radius: 4px;
+  color: #202124;
+  font-size: 13px;
+  padding: 7px 12px;
+}
+
+#tutorial-reset:hover,
+#tutorial-controls button:hover {
+  background: #eef3fb;
+}
+
+#tutorial-layout {
+  display: grid;
+  grid-template-columns: 210px 280px minmax(0, 1fr);
+  gap: 0;
+  min-height: calc(100vh - 77px);
+}
+
+#tutorial-modules,
+#tutorial-lessons {
+  border-right: 1px solid #d7dbe2;
+  background: #fff;
+  overflow-y: auto;
+}
+
+#tutorial-modules {
+  padding: 12px;
+}
+
+#tutorial-lessons {
+  padding: 10px;
+}
+
+.tutorial-module,
+.tutorial-lesson {
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #202124;
+  display: block;
+  text-align: left;
+}
+
+.tutorial-module {
+  padding: 9px 10px;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.tutorial-module.active,
+.tutorial-lesson.active {
+  background: #e7efff;
+}
+
+.tutorial-module-progress,
+.tutorial-lesson-meta {
+  color: #68717d;
+  display: block;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.tutorial-lesson {
+  padding: 8px;
+  margin-bottom: 3px;
+  font-size: 13px;
+}
+
+.tutorial-lesson-title {
+  display: block;
+  line-height: 1.25;
+}
+
+.tutorial-lesson.completed .tutorial-lesson-title::after {
+  content: " done";
+  color: #137333;
+  font-size: 11px;
+}
+
+.tutorial-lesson.unbound .tutorial-lesson-title::after {
+  content: " unmapped";
+  color: #8a5a00;
+  font-size: 11px;
+}
+
+#tutorial-main {
+  padding: 26px 32px;
+  min-width: 0;
+}
+
+#tutorial-command-meta {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+#tutorial-group-label,
+#tutorial-risk-label {
+  color: #5f6368;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+#tutorial-risk-label {
+  background: #eef0f3;
+  border: 1px solid #d7dbe2;
+  border-radius: 4px;
+  padding: 4px 7px;
+  white-space: nowrap;
+}
+
+#tutorial-title {
+  margin: 4px 0 10px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#tutorial-command-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 34px;
+  margin-bottom: 10px;
+}
+
+#tutorial-command-name {
+  background: #edf0f4;
+  border-radius: 4px;
+  color: #202124;
+  font-size: 13px;
+  padding: 5px 7px;
+}
+
+#tutorial-key-bindings {
+  max-width: none;
+  min-height: 28px;
+}
+
+#tutorial-description,
+#tutorial-step,
+#tutorial-typed,
+#tutorial-feedback {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+#tutorial-description {
+  color: #3c4043;
+  max-width: 820px;
+}
+
+#tutorial-step {
+  background: #fff;
+  border: 1px solid #d7dbe2;
+  border-radius: 6px;
+  margin-top: 16px;
+  padding: 12px 14px;
+}
+
+#tutorial-typed {
+  color: #5f6368;
+  min-height: 22px;
+  padding: 10px 0 2px;
+}
+
+#tutorial-feedback {
+  color: #174ea6;
+  min-height: 22px;
+  padding-bottom: 12px;
+}
+
+#tutorial-feedback.error {
+  color: #b3261e;
+}
+
+#tutorial-feedback.success {
+  color: #137333;
+}
+
+#tutorial-sandbox {
+  background: #fff;
+  border: 1px solid #d7dbe2;
+  border-radius: 6px;
+  min-height: 310px;
+  overflow: hidden;
+}
+
+.tutorial-stage-header {
+  background: #f2f4f7;
+  border-bottom: 1px solid #d7dbe2;
+  color: #3c4043;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.tutorial-stage-body {
+  padding: 16px;
+}
+
+.tutorial-motion-board {
+  border: 1px solid #c8d1de;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  padding: 12px;
+  position: relative;
+}
+
+.tutorial-motion-token {
+  background: #174ea6;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  left: 12px;
+  padding: 4px 8px;
+  position: absolute;
+  top: 12px;
+  transition: transform 140ms ease;
+  z-index: 1;
+}
+
+.tutorial-motion-row {
+  border-bottom: 1px solid #e0e5ec;
+  color: #5f6368;
+  height: 33px;
+  line-height: 33px;
+  padding-left: 140px;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.tutorial-motion-row.active {
+  background: #e7f0ff;
+  color: #174ea6;
+}
+
+.tutorial-scroll-meter {
+  background: #e6e9ef;
+  border-radius: 100px;
+  height: 8px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.tutorial-scroll-meter span {
+  background: #2f8f46;
+  display: block;
+  height: 100%;
+  transition: width 140ms ease;
+}
+
+.tutorial-scroll-pane {
+  border: 1px solid #d7dbe2;
+  height: 170px;
+  overflow: auto;
+  padding: 14px;
+  white-space: normal;
+}
+
+.tutorial-wide-content {
+  width: 900px;
+}
+
+.tutorial-fake-link {
+  color: #2456a6;
+  text-decoration: underline;
+}
+
+.tutorial-selected-link {
+  background: #d8f0dd;
+  border-radius: 3px;
+  color: #137333;
+  padding: 2px 4px;
+}
+
+.tutorial-hint {
+  background: linear-gradient(to bottom, #fff785 0%, #ffc542 100%);
+  border: 1px solid #c38a22;
+  border-radius: 3px;
+  color: #302505;
+  display: inline-block;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: bold;
+  margin-right: 4px;
+  padding: 1px 4px;
+}
+
+.tutorial-tab-strip {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tutorial-tab {
+  border: 1px solid #c4cad4;
+  border-radius: 4px 4px 0 0;
+  background: #edf0f4;
+  padding: 7px 12px;
+}
+
+.tutorial-tab.active {
+  background: #d9e7ff;
+  border-color: #8db2f4;
+}
+
+.tutorial-highlight {
+  background: #fff59d;
+  color: #202124;
+}
+
+.tutorial-highlight.active {
+  outline: 2px solid #fbbc04;
+}
+
+.tutorial-fake-input {
+  border: 1px solid #aeb6c2;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 8px;
+  width: min(320px, 100%);
+}
+
+.tutorial-active-target {
+  border-color: #174ea6;
+  box-shadow: 0 0 0 3px rgba(23, 78, 166, 0.18);
+}
+
+#tutorial-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+#tutorial-controls button {
+  position: relative;
+}
+
+.tutorial-control-hint {
+  background: linear-gradient(to bottom, #fff785 0%, #ffc542 100%);
+  border: 1px solid #c38a22;
+  border-radius: 3px;
+  color: #302505;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: bold;
+  left: 50%;
+  padding: 1px 5px;
+  position: absolute;
+  top: -20px;
+  transform: translateX(-50%);
+}
+
+.tutorial-advance-mode #tutorial-next {
+  border-color: #174ea6;
+  box-shadow: 0 0 0 3px rgba(23, 78, 166, 0.14);
+}
+
+#tutorial-mark-read {
+  display: none;
+}
+
+#tutorial-main.unbound #tutorial-mark-read {
+  display: inline-block;
+}
+
+@media (max-width: 980px) {
+  #tutorial-layout {
+    grid-template-columns: 1fr;
+  }
+
+  #tutorial-modules,
+  #tutorial-lessons {
+    border-right: 0;
+    border-bottom: 1px solid #d7dbe2;
+    max-height: 210px;
+  }
+
+  #tutorial-main {
+    padding: 20px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body,
+  #tutorial-header,
+  #tutorial-modules,
+  #tutorial-lessons,
+  #tutorial-step,
+  #tutorial-sandbox {
+    background: #202124;
+    color: #e8eaed;
+  }
+
+  body {
+    background: #171717;
+  }
+
+  #tutorial-header,
+  #tutorial-modules,
+  #tutorial-lessons,
+  #tutorial-step,
+  #tutorial-sandbox,
+  .tutorial-scroll-pane {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  #tutorial-header .vim {
+    color: var(--vimium-link-color);
+  }
+
+  #tutorial-progress-summary,
+  .tutorial-module-progress,
+  .tutorial-lesson-meta,
+  #tutorial-group-label,
+  #tutorial-risk-label,
+  #tutorial-typed,
+  #tutorial-description {
+    color: #bdc1c6;
+  }
+
+  #tutorial-reset,
+  #tutorial-controls button,
+  #tutorial-risk-label,
+  #tutorial-command-name,
+  .tutorial-stage-header,
+  .tutorial-tab {
+    background: #2b2c2f;
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #e8eaed;
+  }
+
+  .tutorial-module,
+  .tutorial-lesson {
+    color: #e8eaed;
+  }
+
+  .tutorial-module.active,
+  .tutorial-lesson.active,
+  .tutorial-tab.active {
+    background: #17345f;
+  }
+
+  .tutorial-motion-board,
+  .tutorial-motion-row {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .tutorial-motion-row {
+    color: #bdc1c6;
+  }
+
+  .tutorial-motion-row.active {
+    background: #17345f;
+    color: #e8eaed;
+  }
+
+  .tutorial-scroll-meter {
+    background: #3a3b3d;
+  }
+
+  .tutorial-fake-input {
+    background: #171717;
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #e8eaed;
+  }
+}
